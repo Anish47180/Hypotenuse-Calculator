@@ -1,24 +1,56 @@
-#include <SFML/Graphics.hpp>
-
+#include <iostream>
+#include <cmath>
+#define string std::string
+#define cin std::cin
+#define cout std::cout
+#define tan std::tan
+#define sin std::sin
+#define cos std::cos
+#define _USE_MATH_DEFINES
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
+    // variable declaration
 
-    while (window.isOpen())
+    long double length;
+    long double anglef;
+    long double opposite;
+    long double angle;
+    long double tanned;
+    long double oppositef;
+    int restart;
+
+    // console input
+
+    cout << "Enter angle: ";
+    cin >> angle;
+    cout << "Enter adjacent side: ";
+    cin >> length;
+
+    // processing
+
+    anglef = angle / 57.2957795;
+    opposite = tan(anglef) * length;
+
+    // console output
+
+    cout << "The side of the opposite is " << opposite << "\n";
+
+    // restart
+
+    cout << "Do you want to find another opposite side of another triangle?\n"
+         << "Type 1 for yes or 0 for no";
+    cin >> restart;
+
+    if (restart == 0)
     {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
-
-        window.clear();
-        window.draw(shape);
-        window.display();
+        cout << "Bye!";
     }
-
-    return 0;
+    else if (restart == 1)
+    {
+        main();
+    }
+    else
+    {
+        cout << "INVALID ARGUMENT";
+    }
 }
