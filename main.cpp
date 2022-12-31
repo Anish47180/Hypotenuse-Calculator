@@ -1,31 +1,24 @@
-#include <iostream>
-#include <cmath>
-#define string std::string
-#define cin std::cin
-#define cout std::cout
-#define tan std::tan
+#include <SFML/Graphics.hpp>
 
 int main()
 {
-  //variable declaration
-  
-  int length;
-  int opposite;
-  int angle;
+    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
+    sf::CircleShape shape(100.f);
+    shape.setFillColor(sf::Color::Green);
 
-  //console input
+    while (window.isOpen())
+    {
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+                window.close();
+        }
 
-  cout << "Enter angle: ";
-  cin >> angle;
-  cout << "Enter length";
-  cin >> length;
-  
-  //processing
+        window.clear();
+        window.draw(shape);
+        window.display();
+    }
 
-  tan(angle);
-
-  //console output
-
-  cout << angle;
-
+    return 0;
 }
